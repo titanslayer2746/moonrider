@@ -7,7 +7,6 @@ import {
 import { ClerkProvider, useAuth } from "@clerk/clerk-react";
 import SignIn from "./pages/SignIn";
 import Dashboard from "./pages/Dashboard";
-import TailwindTest from "./components/TailwindTest";
 import "./index.css";
 import "./App.css";
 
@@ -44,15 +43,7 @@ function App() {
         <div className="App">
           <Routes>
             <Route path="/sign-in" element={<SignIn />} />
-            <Route
-              path="/dashboard"
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/tailwind-test" element={<TailwindTest />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/" element={<Navigate to="/sign-in" replace />} />
           </Routes>
         </div>

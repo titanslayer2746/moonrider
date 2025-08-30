@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useUser, useAuth } from "@clerk/clerk-react";
 import {
   Search,
@@ -38,6 +39,7 @@ import AddProfileModal from "../components/AddProfileModal";
 function Dashboard() {
   const [showModal, setShowModal] = useState(false);
   const [activeTab, setActiveTab] = useState("contact");
+  const navigate = useNavigate();
   const { user, isLoaded } = useUser();
   const { signOut } = useAuth();
 
@@ -94,12 +96,8 @@ function Dashboard() {
 
   const COLORS = ["#86efac", "#fbbf24", "#fca5a5"];
 
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-    } catch (err) {
-      console.error("Error signing out:", err);
-    }
+  const handleSignOut = () => {
+    navigate("/sign-in");
   };
 
   if (!isLoaded) {
